@@ -16,8 +16,8 @@
 @property (nonatomic, strong) NSString *airlineName;
 @property (nonatomic, strong) NSString *inboundFlightsDuration;
 @property (nonatomic, strong) NSString *outboundFlightsDuration;
-@property (nonatomic, strong) NSString *stops;
-@property (nonatomic, strong) NSString *totalAmount;
+@property (atomic, assign) int stops;
+@property (atomic, assign) float totalAmount;
 
 
 @end

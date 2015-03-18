@@ -119,8 +119,8 @@
                     self.currentItinerary.airlineName = [item objectForKey: @"AirlineName"];
                     self.currentItinerary.inboundFlightsDuration = [item objectForKey: @"InboundFlightsDuration"];
                     self.currentItinerary.outboundFlightsDuration = [item objectForKey: @"OutboundFlightsDuration"];
-                    self.currentItinerary.stops = [[item objectForKey: @"Stops"] stringValue];
-                    self.currentItinerary.totalAmount = [[item objectForKey: @"TotalAmount"] stringValue];
+                    self.currentItinerary.stops = [[item objectForKey: @"Stops"] intValue];
+                    self.currentItinerary.totalAmount = [[item objectForKey: @"TotalAmount"] floatValue];
                     
                     [self.flightResults addObject: self.currentItinerary];
                 }

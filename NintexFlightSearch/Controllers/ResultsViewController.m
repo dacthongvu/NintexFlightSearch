@@ -9,11 +9,16 @@
 
 @implementation ResultsViewController
 
-@synthesize dataArray, currentItinerary, tableView, itemLogo, labelAirlineName, labelInboundFlightsDuration, labelOutboundFlightsDuration, labelStops, labelTotalAmount;
+@synthesize dataArray, currentItinerary, tableView, itemLogo, labelAirlineName, labelInboundFlightsDuration, labelOutboundFlightsDuration, labelStops, labelTotalAmount, formatter;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = NSLocalizedString(@"Flight Search Results", @"");
+    
+    self.formatter = [[NSNumberFormatter alloc] init];
+    [self.formatter setFormatterBehavior: NSNumberFormatterBehaviorDefault];
+    [self.formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [self.formatter setMaximumFractionDigits:2];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,8 +89,8 @@
         self.labelAirlineName.text = self.currentItinerary.airlineName;
         self.labelInboundFlightsDuration.text = self.currentItinerary.inboundFlightsDuration;
         self.labelOutboundFlightsDuration.text = self.currentItinerary.outboundFlightsDuration;
-        self.labelStops.text = self.currentItinerary.stops;
-        self.labelTotalAmount.text = self.currentItinerary.totalAmount;
+        self.labelStops.text = [NSString stringWithFormat: @"%i", self.currentItinerary.stops];
+        self.labelTotalAmount.text = [self.formatter stringFromNumber: [NSNumber numberWithFloat: self.currentItinerary.totalAmount]];
         
         if (self.currentItinerary.airlineLogoAddress.length > 0){
             self.itemLogo.imageUrl = [NSURL URLWithString: self.currentItinerary.airlineLogoAddress];

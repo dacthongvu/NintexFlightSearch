@@ -21,6 +21,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *labelOutboundFlightsDuration;
 @property (nonatomic, strong) IBOutlet UILabel *labelStops;
 @property (nonatomic, strong) IBOutlet UILabel *labelTotalAmount;
+@property (nonatomic, strong) NSNumberFormatter *formatter;
 
 @end
 
